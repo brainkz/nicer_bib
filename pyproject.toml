@@ -20,5 +20,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/brainkz/sampleproject"
-"Bug Tracker" = "https://github.com/brainkz/sampleproject/issues"
+"Homepage" = "https://github.com/brainkz/nicer_bib"
+"Bug Tracker" = "https://github.com/brainkz/nicer_bib/issues"
