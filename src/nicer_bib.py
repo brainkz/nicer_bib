@@ -5,49 +5,6 @@ Created on Wed Jul 27 12:00:54 2022
 
 @author: brainkz
 """
-
-bib_str = '''
-@article{10.1145/3177877,
-author = {Sadat, Sayed Abdullah and Canbolat, Mustafa and K\"{o}se, Sel\c{c}uk},
-title = {Optimal Allocation of LDOs and Decoupling Capacitors within a Distributed On-Chip Power Grid},
-year = {2018},
-issue_date = {July 2018},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-volume = {23},
-number = {4},
-issn = {1084-4309},
-url = {https://doi.org/10.1145/3177877},
-doi = {10.1145/3177877},
-abstract = {Parallel on-chip voltage regulation, where multiple regulators are connected to the same power grid, has recently attracted significant attention with the proliferation of small on-chip voltage regulators. In this article, the number, size, and location of parallel low-dropout (LDO) regulators and intentional decoupling capacitors are optimized using mixed integer non-linear programming formulation. The proposed optimization function concurrently considers multiple objectives such as area, power noise, and overall power consumption. Certain objectives are optimized by putting constraints on the other objectives with the proposed technique. Additional constraints have been added to avoid the overlap of LDOs and decoupling capacitors in the optimization process. The results of an optimized LDO allocation in the POWER8 chip is compared with the recent LDO allocation in the same IBM chip in a case study where a 20% reduction in the noise is achieved. The results of the proposed multi-criteria objective function under a different area, power, and noise constraints are also evaluated with a sample ISPD’11 benchmark circuits in another case study.},
-journal = {ACM Trans. Des. Autom. Electron. Syst.},
-month = {may},
-articleno = {49},
-numpages = {15},
-keywords = {Power delivery network (PDN), decoupling capacitors, current sharing, physical design, distributed on-chip voltage regulator}
-}
-'''
-bib_str = '''
-@inproceedings{10.1145/2897937.2898008,
-author = {Zhan, Xin and Li, Peng-Hsiang Chung and S\'{a}nchez-Sinencio, Edgar},
-title = {Distributed On-Chip Regulation: Theoretical Stability Foundation, over-Design Reduction and Performance Optimization},
-year = {2016},
-isbn = {9781450342360},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/2897937.2898008},
-doi = {10.1145/2897937.2898008},
-abstract = {While distributed on-chip voltage regulation offers an appealing solution to power delivery, designing power delivery networks (PDNs) with distributed on-chip voltage regulators with guaranteed stability is challenging because of the complex interactions between active regulators and the bulky passive network. The recently developed hybrid stability theory provides an efficient stability checking and design approach, giving rise to highly desirable localized design of PDNs. However, the inherent conservativeness of the hybrid stability criteria can lead to pessimism in stability evaluation and hence large over-design. We address this challenge by proposing an optimal frequency-dependent system partitioning technique to significantly reduce the amount of pessimism in stability analysis. With theoretical rigor, we show how to partition a PDN system by employing optimal frequency-dependent impedance splitting between the passive network and voltage regulators while maintaining the desired theoretical properties of the partitioned system blocks upon which the hybrid stability principle is anchored. We demonstrate a new stability-ensuring PDN design approach with the proposed over-design reduction technique using an automated optimization flow which significantly boosts regulation performance and power efficiency.},
-booktitle = {Proceedings of the 53rd Annual Design Automation Conference},
-articleno = {54},
-numpages = {6},
-location = {Austin, Texas},
-series = {DAC '16}
-}
-'''
-
-
-
 import re
 import os
 from pybtex.database import parse_string, Person
@@ -113,7 +70,8 @@ def filter_booktitle_journal(entry, keys = KEYS, abbr = JOURNAL_ABBR):
         entry.fields[key] = ORDINAL.sub('', entry.fields[key])
         entry.fields[key] = WORDS.sub('', entry.fields[key])
     entry.fields[key] = cap_title(entry.fields[key])
-if __name__ == '__main__':
+
+def run():
     os.system('afplay /System/Library/Sounds/Morse.aiff')
     try:
         db = parse_string(paste(), 'bibtex').lower()
